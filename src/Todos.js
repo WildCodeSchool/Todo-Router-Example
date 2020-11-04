@@ -11,6 +11,7 @@ class Todos extends React.Component {
 			.then((resp) => resp.json())
 			.then((data) => this.setState({ todos: data, loading: false }));
 	}
+
 	render() {
 		return (
 			<>
