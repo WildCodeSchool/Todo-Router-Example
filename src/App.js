@@ -6,6 +6,7 @@ import {
 	Switch,
 	Route,
 	Redirect,
+	useHistory,
 } from 'react-router-dom';
 import Homepage from './Homepage';
 import Todos from './Todos';
@@ -13,11 +14,24 @@ import Todo from './Todo';
 import Selector from './Selector';
 
 // painting / sculpture / photography
-
+const types = [1, 2, 3, 4];
 function App() {
-	console.log('re-render');
+	let history = useHistory();
+
+	const handleChange = (event) => {
+		console.log('change', event.target.value);
+		history.push(`/todos/${event.target.value}`);
+	};
 	return (
 		<Router>
+			<select
+				style={{ width: '100px' }}
+				onChange={(event) => handleChange(event)}
+			>
+				{types.map((type) => (
+					<option>{type}</option>
+				))}
+			</select>
 			<Selector />
 			<Switch>
 				<Route path='/' exact component={Homepage}></Route>
