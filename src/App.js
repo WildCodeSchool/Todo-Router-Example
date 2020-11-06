@@ -23,7 +23,7 @@ import './App.css';
 function App() {
 	return (
 		<Router>
-			{/* <Selector list={categories} redirect /> */}
+			<Selector list={categories} redirect />
 			<Switch>
 				<Route path='/' exact component={Homepage}></Route>
 				<Route path='/todos' exact component={Todos}></Route>

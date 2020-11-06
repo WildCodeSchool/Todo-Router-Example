@@ -17,6 +17,7 @@ class Todos extends React.Component {
 		return (
 			<>
 				<h1>Todos</h1>
+				<Selector list={categories} redirect />
 
 				<div className='card-list'>
 					{this.state.loading ? (
