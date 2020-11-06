@@ -5,19 +5,29 @@ class Todo extends React.Component {
 		super(props);
 		this.state = { todo: null, loading: true };
 	}
-
-	componentDidMount() {
+	handleFetch() {
 		fetch(
 			`https://jsonplaceholder.typicode.com/todos/${this.props.match.params.id}`
 		)
 			.then((resp) => resp.json())
 			.then((data) => this.setState({ todo: data, loading: false }));
 	}
+	componentDidMount() {
+		this.handleFetch();
+	}
+	componentDidUpdate(prevProps) {
+		if (prevProps.match.params.id !== this.props.match.params.id) {
+			this.handleFetch();
+		}
+	}
 	render() {
-		console.log('state', this.state);
+		console.log('props', this.props);
 		return (
 			<>
 				<h1>Todo number {this.props.match.params.id}</h1>
+
+				<button onClick={() => this.props.history.goBack()}>Go back</button>
+
 				<ul>
 					{this.state.loading ? (
 						<h1>loading...</h1>

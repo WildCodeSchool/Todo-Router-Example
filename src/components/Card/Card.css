@@ -1,0 +1,25 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	border-radius: 10px;
+	color: white;
+	padding: 10px;
+	background-color: rgba(98, 160, 193, 0.556);
+}
+.card-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.card button {
+	width: 100%;
+	height: 30px;
+}
+.card h1 {
+	margin: 0;
+	text-align: center;
+}

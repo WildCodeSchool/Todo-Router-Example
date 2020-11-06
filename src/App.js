@@ -1,6 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
-
+// Modules
+import React from 'react';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -8,31 +7,23 @@ import {
 	Redirect,
 	useHistory,
 } from 'react-router-dom';
-import Homepage from './Homepage';
-import Todos from './Todos';
-import Todo from './Todo';
-import Selector from './Selector';
 
-// painting / sculpture / photography
-const types = [1, 2, 3, 4];
+// Utils
+import { categories } from './utils/index';
+
+// Components
+import Homepage from './Pages/Hompage';
+import Todos from './components/TodoList/Todos';
+import Todo from './components/TodoList/Todo';
+import Selector from './components/Selector/Selector';
+
+// Styles
+import './App.css';
+
 function App() {
-	let history = useHistory();
-
-	const handleChange = (event) => {
-		console.log('change', event.target.value);
-		history.push(`/todos/${event.target.value}`);
-	};
 	return (
 		<Router>
-			<select
-				style={{ width: '100px' }}
-				onChange={(event) => handleChange(event)}
-			>
-				{types.map((type) => (
-					<option>{type}</option>
-				))}
-			</select>
-			<Selector />
+			<Selector list={categories} redirect />
 			<Switch>
 				<Route path='/' exact component={Homepage}></Route>
 				<Route path='/todos' exact component={Todos}></Route>
