@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Card from '../Card/Card';
 
 class Todos extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { todos: null, loading: true };
+		this.state = { todos: [], loading: true };
 	}
 	componentDidMount() {
 		fetch('https://jsonplaceholder.typicode.com/todos/')
@@ -13,20 +13,20 @@ class Todos extends React.Component {
 	}
 
 	render() {
+		console.log(this.state);
 		return (
 			<>
 				<h1>Todos</h1>
-				<ul>
+
+				<div className='card-list'>
 					{this.state.loading ? (
 						<h1>loading...</h1>
 					) : (
 						this.state.todos.map((todo) => (
-							<Link to={`/todos/${todo.id}`}>
-								<li>{todo.title} </li>
-							</Link>
+							<Card title={todo.title} id={todo.id} done={todo.completed} />
 						))
 					)}
-				</ul>
+				</div>
 			</>
 		);
 	}

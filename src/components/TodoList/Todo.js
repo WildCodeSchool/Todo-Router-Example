@@ -14,10 +14,12 @@ class Todo extends React.Component {
 			.then((data) => this.setState({ todo: data, loading: false }));
 	}
 	render() {
-		console.log('state', this.state);
+		console.log('props', this.props);
 		return (
 			<>
 				<h1>Todo number {this.props.match.params.id}</h1>
+				<button onClick={() => this.props.history.goBack()}>Go back</button>
+
 				<ul>
 					{this.state.loading ? (
 						<h1>loading...</h1>
