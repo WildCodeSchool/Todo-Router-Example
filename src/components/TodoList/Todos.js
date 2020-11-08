@@ -1,5 +1,7 @@
 import React from 'react';
 import Card from '../Card/Card';
+import Selector from '../Selector/Selector';
+import { categories } from '../../utils/index';
 
 class Todos extends React.Component {
 	constructor(props) {
